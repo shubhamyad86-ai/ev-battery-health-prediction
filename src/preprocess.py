@@ -1,106 +1,97 @@
 """
-Phase 4 - Lesson 4.1
-Load and Inspect EV Battery Dataset
-Author: Shubham Yadav
-Python Version: 3.10.10
+Phase 4 - Lesson 4.2
+Data Cleaning Pipeline
+Python 3.10.10
 """
 
 import pandas as pd
 from pathlib import Path
 
-# -----------------------------
+# ----------------------------------------------------
 # Project Paths
-# -----------------------------
+# ----------------------------------------------------
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 RAW_DATA = BASE_DIR / "data" / "raw"
-
 PROCESSED_DATA = BASE_DIR / "data" / "processed"
 
-# Create processed folder if it doesn't exist
 PROCESSED_DATA.mkdir(exist_ok=True)
 
-# -----------------------------
+FILE = RAW_DATA / "ev_battery_telemetry_synthetic.xlsx"
+
+# ----------------------------------------------------
 # Load Dataset
-# -----------------------------
-file_path = RAW_DATA / "ev_battery_telemetry_synthetic.xlsx"
+# ----------------------------------------------------
 
 print("=" * 60)
 print("Loading Dataset...")
 print("=" * 60)
 
-df = pd.read_excel(file_path)
+df = pd.read_excel(FILE)
 
-print("Dataset Loaded Successfully!\n")
-
-# -----------------------------
-# Basic Information
-# -----------------------------
-
-print("=" * 60)
-print("Dataset Shape")
-print("=" * 60)
-
-print(df.shape)
-
+print("Rows :", len(df))
 print()
 
-print("=" * 60)
-print("Column Names")
-print("=" * 60)
+# ----------------------------------------------------
+# Remove Duplicate Rows
+# ----------------------------------------------------
 
-print(df.columns)
+duplicates = df.duplicated().sum()
 
+print("Duplicate Rows :", duplicates)
+
+df = df.drop_duplicates()
+
+print("Rows After Removing Duplicates :", len(df))
 print()
 
-print("=" * 60)
-print("Data Types")
-print("=" * 60)
-
-print(df.dtypes)
-
-print()
-
-print("=" * 60)
-print("First Five Rows")
-print("=" * 60)
-
-print(df.head())
-
-print()
-
-print("=" * 60)
-print("Last Five Rows")
-print("=" * 60)
-
-print(df.tail())
-
-print()
-
-print("=" * 60)
-print("Summary Statistics")
-print("=" * 60)
-
-print(df.describe())
-
-print()
+# ----------------------------------------------------
+# Missing Values
+# ----------------------------------------------------
 
 print("=" * 60)
 print("Missing Values")
 print("=" * 60)
 
 print(df.isnull().sum())
-
 print()
 
+# ----------------------------------------------------
+# Validate Sensor Values
+# ----------------------------------------------------
+
 print("=" * 60)
-print("Duplicate Rows")
+print("Removing Invalid Sensor Values")
 print("=" * 60)
 
-print(df.duplicated().sum())
+# State of Charge must be between 0 and 100
+df = df[(df["soc"] >= 0) & (df["soc"] <= 100)]
 
+# SOH must be between 60 and 100
+df = df[(df["soh"] >= 60) & (df["soh"] <= 100)]
+
+# Battery temperature
+df = df[(df["battery_temp"] >= -20) & (df["battery_temp"] <= 80)]
+
+# Battery Voltage
+df = df[(df["battery_voltage"] >= 250) & (df["battery_voltage"] <= 500)]
+
+# Charge Cycles
+df = df[df["charge_cycles"] >= 0]
+
+print("Rows After Validation :", len(df))
 print()
 
+# ----------------------------------------------------
+# Save Clean Dataset
+# ----------------------------------------------------
+
+output = PROCESSED_DATA / "battery_clean.csv"
+
+df.to_csv(output, index=False)
+
 print("=" * 60)
-print("Inspection Completed")
+print("Clean Dataset Saved")
+print(output)
 print("=" * 60)
