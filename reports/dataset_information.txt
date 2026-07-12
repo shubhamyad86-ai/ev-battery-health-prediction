@@ -1,0 +1,70 @@
+EV Battery Analytics
+============================================================
+
+Rows : 5000
+Columns : 29
+
+Columns
+------------------------------
+vehicle_id
+timestamp
+battery_voltage
+battery_current
+battery_power_kw
+soc
+battery_temp
+ambient_temp
+charge_cycles
+fast_charge_count
+total_distance_km
+trip_distance_km
+avg_speed_kmh
+max_speed_kmh
+acceleration_ms2
+regenerative_energy_kwh
+energy_consumption_kwh_100km
+motor_temp
+inverter_temp
+charger_type
+charging_duration_min
+cell_voltage_std
+internal_resistance
+battery_age_days
+humidity
+soh
+remaining_range_km
+rul_cycles
+battery_failure_risk
+
+Data Types
+------------------------------
+vehicle_id                       object
+timestamp                        object
+battery_voltage                 float64
+battery_current                 float64
+battery_power_kw                float64
+soc                             float64
+battery_temp                    float64
+ambient_temp                    float64
+charge_cycles                     int64
+fast_charge_count                 int64
+total_distance_km               float64
+trip_distance_km                float64
+avg_speed_kmh                   float64
+max_speed_kmh                   float64
+acceleration_ms2                float64
+regenerative_energy_kwh         float64
+energy_consumption_kwh_100km    float64
+motor_temp                      float64
+inverter_temp                   float64
+charger_type                     object
+charging_duration_min             int64
+cell_voltage_std                float64
+internal_resistance             float64
+battery_age_days                  int64
+humidity                        float64
+soh                             float64
+remaining_range_km              float64
+rul_cycles                        int64
+battery_failure_risk             object
+dtype: object

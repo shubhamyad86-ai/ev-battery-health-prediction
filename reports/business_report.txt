@@ -1,0 +1,14 @@
+EV BATTERY ANALYSIS REPORT
+==================================================
+Vehicles : 5000
+Average SOH : 83.21
+Average Temperature : 28.67
+Average Voltage : 364.71
+Average Charge Cycles : 904.24
+Average Remaining Range : 207.26
+
+Recommendations
+Increase monitoring for vehicles with low SOH.
+Reduce excessive fast charging.
+Monitor high battery temperatures.
+Schedule maintenance for Poor batteries.

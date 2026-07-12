@@ -1,0 +1,10 @@
+Metric,Value
+Total Vehicles,5000.0
+Average SOH,83.21
+Minimum SOH,62.6
+Maximum SOH,100.0
+Average SOC,52.27
+Average Battery Temperature,28.67
+Average Voltage,364.71
+Average Charge Cycles,904.24
+Average Remaining Range,207.26
