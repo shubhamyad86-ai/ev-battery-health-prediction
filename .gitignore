@@ -1,4 +1,100 @@
+# ==========================================
+# Python
+# ==========================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.Python
+build/
+dist/
+
+# ==========================================
+# Virtual environments
+# ==========================================
 ven/
 venv/
-__pycache__/
-*.pyc
+.venv/
+env/
+ENV/
+
+# ==========================================
+# Streamlit
+# ==========================================
+.streamlit/secrets.toml
+
+# ==========================================
+# Jupyter
+# ==========================================
+.ipynb_checkpoints/
+
+# ==========================================
+# Testing / linting
+# ==========================================
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# ==========================================
+# Data (raw/processed datasets stay OUT of
+# git — usually large and/or not yours to
+# redistribute. Re-generate with the pipeline.)
+# ==========================================
+data/raw/*
+!data/raw/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+# Local database
+users.db
+*.db
+
+# ==========================================
+# Trained models — INTENTIONALLY COMMITTED.
+#
+# Unlike raw data, these ARE tracked by git.
+# Streamlit Community Cloud (and most simple
+# deployments) do NOT run your training
+# pipeline for you — they just run app.py.
+# Without a committed models/best_model.pkl
+# and models/scaler.pkl, the deployed app
+# has nothing to load and will crash on
+# startup. These files are small (KB range
+# for this project), so committing them is
+# fine. If your models ever get large, look
+# into Git LFS instead of gitignoring them.
+# ==========================================
+# (nothing ignored here on purpose)
+
+reports/*
+!reports/.gitkeep
+
+images/*
+!images/.gitkeep
+
+# App-generated run outputs (personal prediction
+# history / reports — not something to publish)
+predictions.csv
+battery_health_report.pdf
+*.log
+
+# ==========================================
+# Environment variables / secrets
+# ==========================================
+.env
+.env.local
+*.key
+
+# ==========================================
+# OS / editor
+# ==========================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

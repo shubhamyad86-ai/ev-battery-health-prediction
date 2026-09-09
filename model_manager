@@ -1,0 +1,99 @@
+import os
+import joblib
+
+# Folder where models are stored
+MODEL_DIR = "models"
+
+# Create the folder if it doesn't exist
+os.makedirs(MODEL_DIR, exist_ok=True)
+
+
+class ModelManager:
+
+    def __init__(self):
+        self.model = None
+        self.scaler = None
+
+    # -----------------------------
+    # Save ML Model
+    # -----------------------------
+    def save_model(self, model, filename="battery_model.pkl"):
+
+        path = os.path.join(MODEL_DIR, filename)
+
+        joblib.dump(model, path)
+
+        print(f"Model saved to {path}")
+
+    # -----------------------------
+    # Load ML Model
+    # -----------------------------
+    def load_model(self, filename="battery_model.pkl"):
+
+        path = os.path.join(MODEL_DIR, filename)
+
+        if not os.path.exists(path):
+            raise FileNotFoundError(
+                f"Model not found: {path}"
+            )
+
+        self.model = joblib.load(path)
+
+        return self.model
+
+    # -----------------------------
+    # Save Scaler
+    # -----------------------------
+    def save_scaler(self, scaler, filename="scaler.pkl"):
+
+        path = os.path.join(MODEL_DIR, filename)
+
+        joblib.dump(scaler, path)
+
+        print(f"Scaler saved to {path}")
+
+    # -----------------------------
+    # Load Scaler
+    # -----------------------------
+    def load_scaler(self, filename="scaler.pkl"):
+
+        path = os.path.join(MODEL_DIR, filename)
+
+        if not os.path.exists(path):
+            raise FileNotFoundError(
+                f"Scaler not found: {path}"
+            )
+
+        self.scaler = joblib.load(path)
+
+        return self.scaler
+
+    # -----------------------------
+    # List Available Models
+    # -----------------------------
+    def list_models(self):
+
+        files = []
+
+        for file in os.listdir(MODEL_DIR):
+
+            if file.endswith(".pkl"):
+
+                files.append(file)
+
+        return files
+
+    # -----------------------------
+    # Delete Model
+    # -----------------------------
+    def delete_model(self, filename):
+
+        path = os.path.join(MODEL_DIR, filename)
+
+        if os.path.exists(path):
+
+            os.remove(path)
+
+            return True
+
+        return False
