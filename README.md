@@ -87,7 +87,7 @@ Example results from one synthetic training run:
 
   Model                          MAE       RMSE          R²
   ----------------------- ---------- ---------- -----------
-  **Gradient Boosting**     **1.88**   **2.45**   **0.960**
+  Gradient Boosting             1.88       2.45       0.960
   Random Forest                 1.87       2.56       0.956
   XGBoost                       1.96       2.67       0.952
   Linear Regression             2.64       3.27       0.928
