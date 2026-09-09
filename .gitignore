@@ -55,27 +55,27 @@ users.db
 *.db
 
 # ==========================================
-# Trained models — INTENTIONALLY COMMITTED.
-#
-# Unlike raw data, these ARE tracked by git.
-# Streamlit Community Cloud (and most simple
-# deployments) do NOT run your training
-# pipeline for you — they just run app.py.
-# Without a committed models/best_model.pkl
-# and models/scaler.pkl, the deployed app
-# has nothing to load and will crash on
-# startup. These files are small (KB range
-# for this project), so committing them is
-# fine. If your models ever get large, look
-# into Git LFS instead of gitignoring them.
-# ==========================================
-# (nothing ignored here on purpose)
+
+# Required trained models
+models/best_model.pkl
+models/linear_regression.pkl
+models/scaler.pkl
+
+# Other model artifacts - ignored
+models/decision_tree.pkl
+models/gradient_boosting.pkl
+models/lasso_regression.pkl
+models/random_forest.pkl
+models/random_forest_tuned.pkl
+models/ridge_regression.pkl
+models/xgboost.pkl
 
 reports/*
 !reports/.gitkeep
 
 images/*
 !images/.gitkeep
+!images/dashboard.png
 
 # App-generated run outputs (personal prediction
 # history / reports — not something to publish)
