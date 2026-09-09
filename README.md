@@ -15,12 +15,9 @@ history, and PDF reporting.
 [![XGBoost](https://img.shields.io/badge/XGBoost-ML-blue)](https://xgboost.readthedocs.io/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-```{=html}
-<!-- Add a real screenshot or GIF of the application here -->
-```
-```{=html}
-<!-- ![EV Battery Health Prediction Dashboard](assets/screenshot.png) -->
-```
+## 📸 Dashboard Preview
+
+![EV Battery Health Prediction Dashboard](images/dashboard.png)
 
 ------------------------------------------------------------------------
 
